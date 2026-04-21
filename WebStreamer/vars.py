@@ -38,4 +38,4 @@ class Var(object):
     REQUEST_LIMIT = int(environ.get("REQUEST_LIMIT", 5))
     SLEEP_THRESHOLD = int(environ.get("SLEEP_THRESHOLD", "60"))  # 1 minte
     TRUST_HEADERS: bool = str(environ.get("TRUST_HEADERS", "1").lower()) in ("1", "true", "t", "yes", "y")
-    URL = f"http{"s" if HAS_SSL else ""}://{FQDN}{"" if NO_PORT else ":" + str(PORT)}/"
+    URL = f"http{'s' if HAS_SSL else ''}://{FQDN}{'' if NO_PORT else ':' + str(PORT)}/"
