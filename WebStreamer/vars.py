@@ -19,13 +19,13 @@ class Var(object):
     BOT_TOKEN = str(environ.get("BOT_TOKEN"))
 
     ALLOWED_USERS = [int(x.strip()) for x in environ.get("ALLOWED_USERS", "").split(",") if x.strip()]
-    BIND_ADDRESS = str(environ.get("WEB_SERVER_BIND_ADDRESS", "https://url-uploder-89bc8207a2e8.herokuapp.com"))
+    BIND_ADDRESS = str(environ.get("WEB_SERVER_BIND_ADDRESS", "0.0.0.0"))
     BLOCKED_USERS = [int(x.strip()) for x in environ.get("BLOCKED_USERS", "").split(",") if x.strip()]
     CACHE_SIZE: int = int(environ.get("CACHE_SIZE", 128))
     CHUNK_SIZE: int = int(environ.get("CHUNK_SIZE", 1024 * 1024)) #bytes
     CONNECTION_LIMIT = int(environ.get("CONNECTION_LIMIT", 20))
     DEBUG: bool = str(environ.get("DEBUG", "0").lower()) in ("1", "true", "t", "yes", "y")
-    FQDN = str(environ.get("FQDN", BIND_ADDRESS))
+    heroku config:set FQDN=url-uploader-89bc8207a2e8.herokuapp.com
     HAS_SSL = str(environ.get("HAS_SSL", "1").lower()) in ("1", "true", "t", "yes", "y")
     HASH_LENGTH = int(environ.get("HASH_LENGTH", 6))
     if not 5 < HASH_LENGTH < 64:
